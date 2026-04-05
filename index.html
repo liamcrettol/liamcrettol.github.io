@@ -11,23 +11,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0c0f12;
-      --bg2:       #111418;
-      --bg3:       #181d22;
-      --border:    #222830;
-      --border2:   #2d3540;
-      --text:      #c8d0d8;
-      --text-dim:  #6a7a8a;
-      --text-faint:#3a4450;
-      --accent:    #3ecf8e;
-      --accent2:   #1a8f62;
+      --bg: #0c0f12;
+      --bg2: #111418;
+      --bg3: #181d22;
+      --border: #222830;
+      --border2: #2d3540;
+      --text: #c8d0d8;
+      --text-dim: #6a7a8a;
+      --text-faint: #3a4450;
+      --accent: #3ecf8e;
+      --accent2: #1a8f62;
       --accent-glow: rgba(62,207,142,0.12);
-      --amber:     #e8a84c;
-      --blue:      #5b9bd5;
-      --white:     #eef2f5;
-      --mono:      'IBM Plex Mono', monospace;
-      --sans:      'DM Sans', sans-serif;
-      --display:   'Syne', sans-serif;
+      --amber: #e8a84c;
+      --blue: #5b9bd5;
+      --purple: #c084fc;
+      --cyan: #7dd3fc;
+      --white: #eef2f5;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -41,15 +43,17 @@
       overflow-x: hidden;
     }
 
-    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
-    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0 2.5rem;
       height: 54px;
       background: rgba(12,15,18,0.88);
@@ -65,8 +69,11 @@
     }
 
     .nav-links {
-      display: flex; gap: 2rem; list-style: none;
+      display: flex;
+      gap: 2rem;
+      list-style: none;
     }
+
     .nav-links a {
       font-family: var(--mono);
       font-size: 11.5px;
@@ -76,19 +83,22 @@
       text-decoration: none;
       transition: color 0.2s;
     }
+
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       padding: 6rem 2.5rem 4rem;
       position: relative;
       overflow: hidden;
     }
 
     .hero-grid-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -99,15 +109,18 @@
 
     .hero-glow {
       position: absolute;
-      width: 600px; height: 600px;
-      top: -100px; right: -150px;
+      width: 600px;
+      height: 600px;
+      top: -100px;
+      right: -150px;
       background: radial-gradient(circle, rgba(62,207,142,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
     }
 
     .hero-tag {
@@ -117,12 +130,16 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
+
     .hero-tag::before {
       content: '';
       display: inline-block;
-      width: 24px; height: 1px;
+      width: 24px;
+      height: 1px;
       background: var(--accent);
     }
 
@@ -131,7 +148,7 @@
       font-size: clamp(3rem, 7vw, 6rem);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.0;
+      line-height: 1;
       letter-spacing: -0.02em;
       margin-bottom: 1.4rem;
     }
@@ -140,13 +157,15 @@
       font-size: 1.1rem;
       font-weight: 300;
       color: var(--text);
-      max-width: 560px;
+      max-width: 670px;
       line-height: 1.7;
       margin-bottom: 2.4rem;
     }
 
     .hero-pills {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-bottom: 3rem;
     }
 
@@ -160,10 +179,17 @@
       color: var(--text-dim);
       background: var(--bg2);
     }
-    .pill.accent { border-color: var(--accent2); color: var(--accent); background: rgba(62,207,142,0.07); }
+
+    .pill.accent {
+      border-color: var(--accent2);
+      color: var(--accent);
+      background: rgba(62,207,142,0.07);
+    }
 
     .hero-cta {
-      display: flex; gap: 1rem; flex-wrap: wrap;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -175,22 +201,33 @@
       padding: 0.65rem 1.4rem;
       border-radius: 2px;
       transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
     .btn-primary {
       background: var(--accent);
       color: #0a1a12;
       border: 1px solid var(--accent);
     }
-    .btn-primary:hover { background: #5aeaa9; border-color: #5aeaa9; }
+
+    .btn-primary:hover {
+      background: #5aeaa9;
+      border-color: #5aeaa9;
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--text-dim);
       border: 1px solid var(--border2);
     }
-    .btn-ghost:hover { border-color: var(--text-dim); color: var(--white); }
 
-    /* ── SECTIONS ── */
+    .btn-ghost:hover {
+      border-color: var(--text-dim);
+      color: var(--white);
+    }
+
     section {
       padding: 6rem 2.5rem;
       max-width: 1100px;
@@ -204,8 +241,11 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.6rem;
-      display: flex; align-items: center; gap: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
+
     .section-label::before {
       content: '//';
       color: var(--text-faint);
@@ -222,13 +262,17 @@
 
     .section-desc {
       color: var(--text-dim);
-      max-width: 540px;
+      max-width: 620px;
       margin-bottom: 3.5rem;
       font-size: 0.94rem;
     }
 
-    /* ── PROJECTS ── */
-    #projects { border-top: 1px solid var(--border); }
+    #projects,
+    #skills,
+    #experience,
+    #contact {
+      border-top: 1px solid var(--border);
+    }
 
     .projects-grid {
       display: grid;
@@ -240,55 +284,87 @@
 
     .project-card {
       background: var(--bg2);
-      padding: 0;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      transition: background 0.25s;
+      transition: background 0.25s, transform 0.25s;
       position: relative;
     }
-    .project-card:hover { background: var(--bg3); }
+
+    .project-card:hover {
+      background: var(--bg3);
+      transform: translateY(-2px);
+    }
 
     .project-img {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16 / 9;
       background: var(--bg3);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
     }
 
-    /* Placeholder visuals for each project */
     .project-img.spider {
       background: linear-gradient(135deg, #0f1e18 0%, #0c2a1a 50%, #112015 100%);
     }
+
     .project-img.cheetah {
       background: linear-gradient(135deg, #1a1508 0%, #2a1f0a 50%, #1a1205 100%);
     }
+
     .project-img.utility {
       background: linear-gradient(135deg, #0d1520 0%, #0f1e30 50%, #0a1525 100%);
     }
+
     .project-img.pipeline {
       background: linear-gradient(135deg, #150d20 0%, #1e0f30 50%, #100a1a 100%);
     }
 
+    .project-img.real-image {
+      background: #0d1116;
+    }
+
+    .project-img.real-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .project-card:hover .project-img.real-image img {
+      transform: scale(1.02);
+    }
+
     .project-img svg {
-      width: 100%; height: 100%;
-      position: absolute; inset: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
     }
 
     .project-img .img-label {
-      position: absolute; bottom: 0.75rem; right: 0.75rem;
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
       font-family: var(--mono);
       font-size: 9px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-faint);
-      background: rgba(0,0,0,0.5);
-      padding: 0.2rem 0.4rem;
-      border: 1px solid var(--border);
+      color: #c5ced8;
+      background: rgba(0,0,0,0.55);
+      padding: 0.2rem 0.45rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      z-index: 2;
     }
 
-    .project-body { padding: 1.75rem 1.75rem 2rem; flex: 1; display: flex; flex-direction: column; }
+    .project-body {
+      padding: 1.75rem 1.75rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
     .project-type {
       font-family: var(--mono);
@@ -297,10 +373,12 @@
       text-transform: uppercase;
       margin-bottom: 0.6rem;
     }
+
     .type-ecology { color: var(--accent); }
     .type-conservation { color: var(--amber); }
     .type-utility { color: var(--blue); }
-    .type-automation { color: #c084fc; }
+    .type-automation { color: var(--purple); }
+    .type-cartography { color: var(--cyan); }
 
     .project-title {
       font-family: var(--display);
@@ -321,7 +399,9 @@
     }
 
     .project-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
       margin-bottom: 1.25rem;
     }
 
@@ -338,15 +418,20 @@
     .project-highlights {
       border-top: 1px solid var(--border);
       padding-top: 1rem;
-      display: flex; flex-direction: column; gap: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 
     .highlight {
       font-size: 0.8rem;
       color: var(--text-dim);
-      display: flex; align-items: flex-start; gap: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
       line-height: 1.4;
     }
+
     .highlight::before {
       content: '→';
       color: var(--text-faint);
@@ -355,9 +440,6 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-
-    /* ── SKILLS ── */
-    #skills { border-top: 1px solid var(--border); }
 
     .skills-layout {
       display: grid;
@@ -384,17 +466,23 @@
     }
 
     .skill-list {
-      display: flex; flex-direction: column; gap: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .skill-item {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
       font-size: 0.875rem;
       color: var(--text);
     }
 
     .skill-bar {
-      width: 64px; height: 3px;
+      width: 64px;
+      height: 3px;
       background: var(--border);
       border-radius: 2px;
       overflow: hidden;
@@ -419,14 +507,19 @@
     }
 
     .strength-item {
-      display: flex; align-items: flex-start; gap: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
     }
 
     .strength-icon {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       background: var(--accent-glow);
       border: 1px solid var(--accent2);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       font-size: 14px;
     }
@@ -439,17 +532,16 @@
       color: var(--white);
       margin-bottom: 0.2rem;
     }
+
     .strength-text span {
       font-size: 0.8rem;
       color: var(--text-dim);
       line-height: 1.4;
     }
 
-    /* ── EXPERIENCE ── */
-    #experience { border-top: 1px solid var(--border); }
-
     .exp-timeline {
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       gap: 0;
       border-left: 1px solid var(--border);
       margin-left: 0.75rem;
@@ -459,15 +551,19 @@
       padding: 0 0 2.5rem 2.25rem;
       position: relative;
     }
+
     .exp-item::before {
       content: '';
       position: absolute;
-      left: -5px; top: 6px;
-      width: 9px; height: 9px;
+      left: -5px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
       background: var(--bg);
       border: 1px solid var(--border2);
       border-radius: 50%;
     }
+
     .exp-item.current::before {
       background: var(--accent);
       border-color: var(--accent);
@@ -499,15 +595,20 @@
     }
 
     .exp-bullets {
-      display: flex; flex-direction: column; gap: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 
     .exp-bullet {
       font-size: 0.875rem;
       color: var(--text-dim);
-      display: flex; gap: 0.6rem; align-items: flex-start;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
       line-height: 1.45;
     }
+
     .exp-bullet::before {
       content: '—';
       color: var(--text-faint);
@@ -517,14 +618,12 @@
       margin-top: 3px;
     }
 
-    /* ── CONTACT ── */
     #contact {
-      border-top: 1px solid var(--border);
       text-align: center;
     }
 
     .contact-inner {
-      max-width: 560px;
+      max-width: 620px;
       margin: 0 auto;
     }
 
@@ -535,8 +634,10 @@
     }
 
     .contact-links {
-      display: flex; justify-content: center;
-      gap: 1rem; flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .contact-link {
@@ -550,20 +651,25 @@
       padding: 0.6rem 1.25rem;
       border-radius: 2px;
       transition: all 0.2s;
-      display: flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
     .contact-link:hover {
       color: var(--accent);
       border-color: var(--accent2);
       background: var(--accent-glow);
     }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 1.75rem 2.5rem;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     footer span {
@@ -573,36 +679,30 @@
       color: var(--text-faint);
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border2), transparent);
-      margin: 0 auto;
-    }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {/* disabled */
-      
-      
+    .reveal {
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
+
     .reveal, .reveal.visible {
       opacity: 1;
       transform: none;
     }
+
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-layout { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0 1.25rem; }
       .nav-links { gap: 1.25rem; }
       section { padding: 4rem 1.25rem; }
       #hero { padding: 5rem 1.25rem 3rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-layout { grid-template-columns: 1fr; }
       .strengths-box { grid-template-columns: 1fr; }
       footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; }
     }
@@ -615,507 +715,535 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-logo">lc.portfolio</span>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <span class="nav-logo">lc.portfolio</span>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <p class="hero-tag reveal">GIS Technician &amp; Spatial Analyst</p>
-    <h1 class="hero-name reveal reveal-delay-1">Liam<br>Crettol</h1>
-    <p class="hero-sub reveal reveal-delay-2">
-      I build spatial workflows that connect real-world problems to real-world data — across utility systems, wildlife habitat modeling, and field-based ecology.
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <p class="hero-tag reveal">GIS Technician &amp; Spatial Analyst</p>
+      <h1 class="hero-name reveal reveal-delay-1">Liam<br>Crettol</h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        I build spatial workflows that connect real-world problems to real-world data across utility systems, wildlife habitat modeling, cartographic design, and field-based ecology.
+      </p>
+      <div class="hero-pills reveal reveal-delay-3">
+        <span class="pill accent">ArcGIS Pro &amp; AGOL</span>
+        <span class="pill accent">Python / ArcPy</span>
+        <span class="pill">Wildlife Ecology</span>
+        <span class="pill">Habitat Modeling</span>
+        <span class="pill">Cartography</span>
+        <span class="pill">Utility GIS</span>
+        <span class="pill">Remote Sensing</span>
+      </div>
+      <div class="hero-cta reveal reveal-delay-4">
+        <a href="#projects" class="btn btn-primary">↓ View Work</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label reveal">Selected Work</p>
+    <h2 class="section-title reveal">Projects</h2>
+    <p class="section-desc reveal">
+      Applied GIS and spatial analysis across ecology, conservation, production utility systems, cartographic communication, and workflow automation.
     </p>
-    <div class="hero-pills reveal reveal-delay-3">
-      <span class="pill accent">ArcGIS Pro &amp; AGOL</span>
-      <span class="pill accent">Python / ArcPy</span>
-      <span class="pill">Wildlife Ecology</span>
-      <span class="pill">Habitat Modeling</span>
-      <span class="pill">Utility GIS</span>
-      <span class="pill">Remote Sensing</span>
-    </div>
-    <div class="hero-cta reveal reveal-delay-4">
-      <a href="#projects" class="btn btn-primary">↓ View Projects</a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-    </div>
-  </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label reveal">Selected Work</p>
-  <h2 class="section-title reveal">Projects</h2>
-  <p class="section-desc reveal">Applied GIS and spatial analysis — field methodology, conservation modeling, production data management, and automation.</p>
+    <div class="projects-grid">
 
-  <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-img spider">
+          <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="g1" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#1a4a2e" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#0c1a10" stop-opacity="0.2"/>
+              </radialGradient>
+              <linearGradient id="suit" x1="0%" x2="100%" y1="0%" y2="0%">
+                <stop offset="0%" stop-color="#1a2e1a"/>
+                <stop offset="50%" stop-color="#2a6e3a"/>
+                <stop offset="100%" stop-color="#3ecf8e"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="338" fill="url(#g1)"/>
+            <ellipse cx="300" cy="170" rx="260" ry="130" fill="none" stroke="#1e5c35" stroke-width="1" opacity="0.5"/>
+            <ellipse cx="300" cy="170" rx="200" ry="95" fill="none" stroke="#225e38" stroke-width="1" opacity="0.5"/>
+            <ellipse cx="300" cy="170" rx="145" ry="65" fill="none" stroke="#26683e" stroke-width="1" opacity="0.6"/>
+            <ellipse cx="300" cy="170" rx="95" ry="40" fill="none" stroke="#2a7244" stroke-width="1" opacity="0.6"/>
+            <ellipse cx="300" cy="170" rx="52" ry="22" fill="#1e4a2a" stroke="#3ecf8e" stroke-width="0.5" opacity="0.5"/>
 
-    <!-- PROJECT 1 -->
-    <div class="project-card reveal">
-      <div class="project-img spider">
-        <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="g1" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stop-color="#1a4a2e" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#0c1a10" stop-opacity="0.2"/>
-            </radialGradient>
-          </defs>
-          <rect width="600" height="338" fill="url(#g1)"/>
-          <!-- Contour lines suggesting topography -->
-          <ellipse cx="300" cy="170" rx="260" ry="130" fill="none" stroke="#1e5c35" stroke-width="1" opacity="0.5"/>
-          <ellipse cx="300" cy="170" rx="200" ry="95" fill="none" stroke="#225e38" stroke-width="1" opacity="0.5"/>
-          <ellipse cx="300" cy="170" rx="145" ry="65" fill="none" stroke="#26683e" stroke-width="1" opacity="0.6"/>
-          <ellipse cx="300" cy="170" rx="95" ry="40" fill="none" stroke="#2a7244" stroke-width="1" opacity="0.6"/>
-          <ellipse cx="300" cy="170" rx="52" ry="22" fill="#1e4a2a" stroke="#3ecf8e" stroke-width="0.5" opacity="0.5"/>
-          <!-- Transect lines -->
-          <line x1="90" y1="80" x2="510" y2="80" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
-          <line x1="80" y1="130" x2="520" y2="130" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
-          <line x1="75" y1="180" x2="525" y2="180" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
-          <line x1="80" y1="230" x2="520" y2="230" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
-          <line x1="90" y1="280" x2="510" y2="280" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.35"/>
-          <!-- Sample points -->
-          <circle cx="160" cy="130" r="3" fill="#3ecf8e" opacity="0.8"/>
-          <circle cx="240" cy="80" r="3" fill="#3ecf8e" opacity="0.8"/>
-          <circle cx="310" cy="180" r="4" fill="#3ecf8e" opacity="0.9"/>
-          <circle cx="390" cy="130" r="3" fill="#3ecf8e" opacity="0.8"/>
-          <circle cx="450" cy="230" r="3" fill="#3ecf8e" opacity="0.7"/>
-          <circle cx="180" cy="230" r="2.5" fill="#3ecf8e" opacity="0.6"/>
-          <circle cx="350" cy="80" r="2.5" fill="#3ecf8e" opacity="0.6"/>
-          <!-- Legend bar -->
-          <defs>
-            <linearGradient id="suit" x1="0%" x2="100%" y1="0%" y2="0%">
-              <stop offset="0%" stop-color="#1a2e1a"/>
-              <stop offset="50%" stop-color="#2a6e3a"/>
-              <stop offset="100%" stop-color="#3ecf8e"/>
-            </linearGradient>
-          </defs>
-          <rect x="30" y="298" width="90" height="8" rx="1" fill="url(#suit)" opacity="0.7"/>
-          <text x="30" y="320" fill="#3a5040" font-size="7" font-family="monospace">low</text>
-          <text x="105" y="320" fill="#3ecf8e" font-size="7" font-family="monospace" opacity="0.7">high suitability</text>
-        </svg>
-        <span class="img-label">Habitat Suitability · Transect Design</span>
-      </div>
-      <div class="project-body">
-        <span class="project-type type-ecology">Ecology · Spatial Modeling</span>
-        <h3 class="project-title">Wolf Spider Habitat Suitability &amp; Field Sampling Design</h3>
-        <p class="project-desc">
-          Modeled habitat suitability for <em>Hogna carolinensis</em> using GBIF occurrence data and WorldClim climate variables. Reclassified model output into stratified sampling zones, then translated those zones into real transect designs accounting for terrain, access constraints, and field logistics.
-        </p>
-        <div class="project-tags">
-          <span class="tag">MaxEnt / ENMeval</span>
-          <span class="tag">ArcGIS Pro</span>
-          <span class="tag">GBIF</span>
-          <span class="tag">WorldClim</span>
-          <span class="tag">R</span>
-          <span class="tag">Stratified Sampling</span>
+            <line x1="90" y1="80" x2="510" y2="80" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
+            <line x1="80" y1="130" x2="520" y2="130" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
+            <line x1="75" y1="180" x2="525" y2="180" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
+            <line x1="80" y1="230" x2="520" y2="230" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.4"/>
+            <line x1="90" y1="280" x2="510" y2="280" stroke="#3ecf8e" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.35"/>
+
+            <circle cx="160" cy="130" r="3" fill="#3ecf8e" opacity="0.8"/>
+            <circle cx="240" cy="80" r="3" fill="#3ecf8e" opacity="0.8"/>
+            <circle cx="310" cy="180" r="4" fill="#3ecf8e" opacity="0.9"/>
+            <circle cx="390" cy="130" r="3" fill="#3ecf8e" opacity="0.8"/>
+            <circle cx="450" cy="230" r="3" fill="#3ecf8e" opacity="0.7"/>
+            <circle cx="180" cy="230" r="2.5" fill="#3ecf8e" opacity="0.6"/>
+            <circle cx="350" cy="80" r="2.5" fill="#3ecf8e" opacity="0.6"/>
+
+            <rect x="30" y="298" width="90" height="8" rx="1" fill="url(#suit)" opacity="0.7"/>
+            <text x="30" y="320" fill="#3a5040" font-size="7" font-family="monospace">low</text>
+            <text x="105" y="320" fill="#3ecf8e" font-size="7" font-family="monospace" opacity="0.7">high suitability</text>
+          </svg>
+          <span class="img-label">Habitat Suitability · Transect Design</span>
         </div>
-        <div class="project-highlights">
-          <div class="highlight">GIS model directly shaped real fieldwork — sampling zones determined transect placement</div>
-          <div class="highlight">Incorporated access constraints (private land, terrain) into design decisions</div>
-          <div class="highlight">Combined habitat modeling with applied ecological reasoning</div>
+        <div class="project-body">
+          <span class="project-type type-ecology">Ecology · Spatial Modeling</span>
+          <h3 class="project-title">Wolf Spider Habitat Suitability &amp; Field Sampling Design</h3>
+          <p class="project-desc">
+            Modeled habitat suitability for <em>Hogna carolinensis</em> using GBIF occurrence data and WorldClim variables. Reclassified output into stratified sampling zones, then translated those zones into real transect designs that accounted for terrain, access constraints, and field logistics.
+          </p>
+          <div class="project-tags">
+            <span class="tag">MaxEnt / ENMeval</span>
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">GBIF</span>
+            <span class="tag">WorldClim</span>
+            <span class="tag">R</span>
+            <span class="tag">Stratified Sampling</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">GIS model directly shaped real fieldwork and transect placement</div>
+            <div class="highlight">Integrated terrain, access, and habitat suitability into one workflow</div>
+            <div class="highlight">Connected ecological theory to practical field implementation</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- PROJECT 2 -->
-    <div class="project-card reveal reveal-delay-1">
-      <div class="project-img cheetah">
-        <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="g2" cx="40%" cy="60%" r="70%">
-              <stop offset="0%" stop-color="#3a2800" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#100a00" stop-opacity="0.3"/>
-            </radialGradient>
-          </defs>
-          <rect width="600" height="338" fill="url(#g2)"/>
-          <!-- NDVI-style patches -->
-          <ellipse cx="200" cy="200" rx="110" ry="70" fill="#2a4a10" opacity="0.4"/>
-          <ellipse cx="380" cy="150" rx="130" ry="60" fill="#1e3a08" opacity="0.35"/>
-          <ellipse cx="290" cy="270" rx="90" ry="45" fill="#2e5214" opacity="0.4"/>
-          <ellipse cx="100" cy="120" rx="70" ry="50" fill="#1a3208" opacity="0.3"/>
-          <ellipse cx="490" cy="240" rx="80" ry="55" fill="#243e0e" opacity="0.35"/>
-          <!-- Connectivity corridors -->
-          <path d="M200,200 Q290,130 380,150" fill="none" stroke="#e8a84c" stroke-width="2" stroke-dasharray="8,5" opacity="0.5"/>
-          <path d="M200,200 Q240,240 290,270" fill="none" stroke="#e8a84c" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.4"/>
-          <path d="M380,150 Q435,195 490,240" fill="none" stroke="#e8a84c" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.35"/>
-          <!-- Core areas -->
-          <circle cx="200" cy="200" r="22" fill="none" stroke="#e8a84c" stroke-width="1.5" opacity="0.7"/>
-          <circle cx="200" cy="200" r="8" fill="#e8a84c" opacity="0.4"/>
-          <circle cx="380" cy="150" r="18" fill="none" stroke="#e8a84c" stroke-width="1.5" opacity="0.6"/>
-          <circle cx="380" cy="150" r="7" fill="#e8a84c" opacity="0.35"/>
-          <circle cx="290" cy="270" r="14" fill="none" stroke="#e8a84c" stroke-width="1" opacity="0.5"/>
-          <!-- Fragmented barrier -->
-          <rect x="230" y="60" width="6" height="230" fill="#8B4513" opacity="0.25" rx="2"/>
-          <text x="236" y="90" fill="#8B4513" font-size="7" font-family="monospace" opacity="0.6" transform="rotate(90, 236, 90)">barrier</text>
-          <!-- Scale bar -->
-          <line x1="30" y1="310" x2="90" y2="310" stroke="#5a4a30" stroke-width="1"/>
-          <text x="30" y="322" fill="#5a4a30" font-size="7" font-family="monospace">0    50km</text>
-        </svg>
-        <span class="img-label">Connectivity · Habitat Fragmentation</span>
-      </div>
-      <div class="project-body">
-        <span class="project-type type-conservation">Conservation · Remote Sensing</span>
-        <h3 class="project-title">Cheetah Habitat Suitability &amp; Reintroduction Analysis</h3>
-        <p class="project-desc">
-          Independent conservation analysis combining NDVI-derived vegetation structure, habitat suitability modeling, and landscape connectivity assessment. Evaluated fragmentation constraints against minimum viable population thresholds and critically assessed the India reintroduction program against current habitat conditions.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Remote Sensing</span>
-          <span class="tag">NDVI</span>
-          <span class="tag">Habitat Connectivity</span>
-          <span class="tag">ArcGIS Pro</span>
-          <span class="tag">MVP Analysis</span>
-          <span class="tag">Conservation Planning</span>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img cheetah">
+          <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="g2" cx="40%" cy="60%" r="70%">
+                <stop offset="0%" stop-color="#3a2800" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#100a00" stop-opacity="0.3"/>
+              </radialGradient>
+            </defs>
+            <rect width="600" height="338" fill="url(#g2)"/>
+            <ellipse cx="200" cy="200" rx="110" ry="70" fill="#2a4a10" opacity="0.4"/>
+            <ellipse cx="380" cy="150" rx="130" ry="60" fill="#1e3a08" opacity="0.35"/>
+            <ellipse cx="290" cy="270" rx="90" ry="45" fill="#2e5214" opacity="0.4"/>
+            <ellipse cx="100" cy="120" rx="70" ry="50" fill="#1a3208" opacity="0.3"/>
+            <ellipse cx="490" cy="240" rx="80" ry="55" fill="#243e0e" opacity="0.35"/>
+
+            <path d="M200,200 Q290,130 380,150" fill="none" stroke="#e8a84c" stroke-width="2" stroke-dasharray="8,5" opacity="0.5"/>
+            <path d="M200,200 Q240,240 290,270" fill="none" stroke="#e8a84c" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.4"/>
+            <path d="M380,150 Q435,195 490,240" fill="none" stroke="#e8a84c" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.35"/>
+
+            <circle cx="200" cy="200" r="22" fill="none" stroke="#e8a84c" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="200" cy="200" r="8" fill="#e8a84c" opacity="0.4"/>
+            <circle cx="380" cy="150" r="18" fill="none" stroke="#e8a84c" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="380" cy="150" r="7" fill="#e8a84c" opacity="0.35"/>
+            <circle cx="290" cy="270" r="14" fill="none" stroke="#e8a84c" stroke-width="1" opacity="0.5"/>
+
+            <rect x="230" y="60" width="6" height="230" fill="#8B4513" opacity="0.25" rx="2"/>
+            <text x="236" y="90" fill="#8B4513" font-size="7" font-family="monospace" opacity="0.6" transform="rotate(90, 236, 90)">barrier</text>
+
+            <line x1="30" y1="310" x2="90" y2="310" stroke="#5a4a30" stroke-width="1"/>
+            <text x="30" y="322" fill="#5a4a30" font-size="7" font-family="monospace">0    50km</text>
+          </svg>
+          <span class="img-label">Connectivity · Habitat Fragmentation</span>
         </div>
-        <div class="project-highlights">
-          <div class="highlight">Applied minimum viable population theory to evaluate habitat patch viability</div>
-          <div class="highlight">Used NDVI time series to characterize vegetation structure, not just cover</div>
-          <div class="highlight">Grounded critique of the India reintroduction in spatial data — not just literature</div>
+        <div class="project-body">
+          <span class="project-type type-conservation">Conservation · Remote Sensing</span>
+          <h3 class="project-title">Cheetah Habitat Suitability &amp; Reintroduction Analysis</h3>
+          <p class="project-desc">
+            Independent conservation analysis combining NDVI-derived vegetation structure, habitat suitability modeling, and landscape connectivity assessment. Evaluated fragmentation constraints against minimum viable population thresholds and used spatial ecology to critique reintroduction feasibility.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Remote Sensing</span>
+            <span class="tag">NDVI</span>
+            <span class="tag">Habitat Connectivity</span>
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">MVP Analysis</span>
+            <span class="tag">Conservation Planning</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">Applied minimum viable population theory to habitat patch viability</div>
+            <div class="highlight">Used vegetation structure and connectivity, not just static cover maps</div>
+            <div class="highlight">Grounded conservation critique in spatial data and ecological reasoning</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- PROJECT 3 -->
-    <div class="project-card reveal">
-      <div class="project-img utility">
-        <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="g3" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stop-color="#0a1f3a" stop-opacity="0.8"/>
-              <stop offset="100%" stop-color="#060e1e" stop-opacity="0.4"/>
-            </radialGradient>
-          </defs>
-          <rect width="600" height="338" fill="url(#g3)"/>
-          <!-- Grid / parcel pattern -->
-          <g opacity="0.2" stroke="#1a3a5c" stroke-width="0.7" fill="none">
-            <rect x="40" y="40" width="80" height="60"/>
-            <rect x="120" y="40" width="60" height="60"/>
-            <rect x="180" y="40" width="100" height="60"/>
-            <rect x="280" y="40" width="70" height="60"/>
-            <rect x="40" y="100" width="80" height="80"/>
-            <rect x="120" y="100" width="60" height="80"/>
-            <rect x="180" y="100" width="100" height="80"/>
-            <rect x="280" y="100" width="70" height="80"/>
-            <rect x="350" y="40" width="85" height="140"/>
-            <rect x="435" y="40" width="125" height="70"/>
-            <rect x="435" y="110" width="125" height="70"/>
-            <rect x="40" y="180" width="80" height="70"/>
-            <rect x="120" y="180" width="160" height="70"/>
-            <rect x="280" y="180" width="280" height="70"/>
-            <rect x="40" y="250" width="240" height="50"/>
-            <rect x="280" y="250" width="160" height="50"/>
-            <rect x="440" y="250" width="120" height="50"/>
-          </g>
-          <!-- Water mains (pipes) -->
-          <line x1="40" y1="70" x2="560" y2="70" stroke="#5b9bd5" stroke-width="2.5" opacity="0.6"/>
-          <line x1="40" y1="140" x2="560" y2="140" stroke="#5b9bd5" stroke-width="2.5" opacity="0.5"/>
-          <line x1="40" y1="215" x2="560" y2="215" stroke="#5b9bd5" stroke-width="2.5" opacity="0.5"/>
-          <line x1="200" y1="40" x2="200" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.4"/>
-          <line x1="350" y1="40" x2="350" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.4"/>
-          <line x1="490" y1="40" x2="490" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.35"/>
-          <!-- Service points -->
-          <circle cx="200" cy="70" r="5" fill="#5b9bd5" opacity="0.9"/>
-          <circle cx="350" cy="70" r="5" fill="#5b9bd5" opacity="0.9"/>
-          <circle cx="200" cy="140" r="4" fill="#5b9bd5" opacity="0.8"/>
-          <circle cx="350" cy="140" r="5" fill="#5b9bd5" opacity="0.8"/>
-          <circle cx="490" cy="140" r="4" fill="#5b9bd5" opacity="0.8"/>
-          <circle cx="200" cy="215" r="4" fill="#5b9bd5" opacity="0.7"/>
-          <circle cx="350" cy="215" r="4" fill="#5b9bd5" opacity="0.7"/>
-          <!-- Classification labels on parcels -->
-          <text x="55" y="90" fill="#4a7aaa" font-size="8" font-family="monospace" opacity="0.6">K</text>
-          <text x="135" y="90" fill="#6a6aaa" font-size="8" font-family="monospace" opacity="0.6">OOD</text>
-          <text x="200" y="90" fill="#4a7aaa" font-size="8" font-family="monospace" opacity="0.6">K</text>
-          <text x="300" y="90" fill="#5a8aba" font-size="8" font-family="monospace" opacity="0.5">RES</text>
-          <!-- System label -->
-          <text x="30" y="315" fill="#2a4a6a" font-size="8" font-family="monospace">Pineview Water Systems · Parcel + Network</text>
-        </svg>
-        <span class="img-label">Production GIS · Utility Network</span>
-      </div>
-      <div class="project-body">
-        <span class="project-type type-utility">Utility GIS · Data Management</span>
-        <h3 class="project-title">Production Utility GIS — Pineview Water Systems</h3>
-        <p class="project-desc">
-          Managing GIS infrastructure for a real utility in production — parcel data, hosted feature layers, service area maps, and Cityworks asset integration. The work is less about making maps and more about maintaining system integrity: not overwriting classifications, preserving layer dependencies, and making sure AGOL and Cityworks stay in sync.
-        </p>
-        <div class="project-tags">
-          <span class="tag">ArcGIS Pro</span>
-          <span class="tag">ArcGIS Online</span>
-          <span class="tag">Cityworks</span>
-          <span class="tag">Feature Services</span>
-          <span class="tag">Data Management</span>
-          <span class="tag">GlobalID</span>
+      <div class="project-card reveal">
+        <div class="project-img utility">
+          <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="g3" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#0a1f3a" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#060e1e" stop-opacity="0.4"/>
+              </radialGradient>
+            </defs>
+            <rect width="600" height="338" fill="url(#g3)"/>
+            <g opacity="0.2" stroke="#1a3a5c" stroke-width="0.7" fill="none">
+              <rect x="40" y="40" width="80" height="60"/>
+              <rect x="120" y="40" width="60" height="60"/>
+              <rect x="180" y="40" width="100" height="60"/>
+              <rect x="280" y="40" width="70" height="60"/>
+              <rect x="40" y="100" width="80" height="80"/>
+              <rect x="120" y="100" width="60" height="80"/>
+              <rect x="180" y="100" width="100" height="80"/>
+              <rect x="280" y="100" width="70" height="80"/>
+              <rect x="350" y="40" width="85" height="140"/>
+              <rect x="435" y="40" width="125" height="70"/>
+              <rect x="435" y="110" width="125" height="70"/>
+              <rect x="40" y="180" width="80" height="70"/>
+              <rect x="120" y="180" width="160" height="70"/>
+              <rect x="280" y="180" width="280" height="70"/>
+              <rect x="40" y="250" width="240" height="50"/>
+              <rect x="280" y="250" width="160" height="50"/>
+              <rect x="440" y="250" width="120" height="50"/>
+            </g>
+
+            <line x1="40" y1="70" x2="560" y2="70" stroke="#5b9bd5" stroke-width="2.5" opacity="0.6"/>
+            <line x1="40" y1="140" x2="560" y2="140" stroke="#5b9bd5" stroke-width="2.5" opacity="0.5"/>
+            <line x1="40" y1="215" x2="560" y2="215" stroke="#5b9bd5" stroke-width="2.5" opacity="0.5"/>
+            <line x1="200" y1="40" x2="200" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.4"/>
+            <line x1="350" y1="40" x2="350" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.4"/>
+            <line x1="490" y1="40" x2="490" y2="300" stroke="#5b9bd5" stroke-width="1.5" opacity="0.35"/>
+
+            <circle cx="200" cy="70" r="5" fill="#5b9bd5" opacity="0.9"/>
+            <circle cx="350" cy="70" r="5" fill="#5b9bd5" opacity="0.9"/>
+            <circle cx="200" cy="140" r="4" fill="#5b9bd5" opacity="0.8"/>
+            <circle cx="350" cy="140" r="5" fill="#5b9bd5" opacity="0.8"/>
+            <circle cx="490" cy="140" r="4" fill="#5b9bd5" opacity="0.8"/>
+            <circle cx="200" cy="215" r="4" fill="#5b9bd5" opacity="0.7"/>
+            <circle cx="350" cy="215" r="4" fill="#5b9bd5" opacity="0.7"/>
+
+            <text x="55" y="90" fill="#4a7aaa" font-size="8" font-family="monospace" opacity="0.6">K</text>
+            <text x="135" y="90" fill="#6a6aaa" font-size="8" font-family="monospace" opacity="0.6">OOD</text>
+            <text x="200" y="90" fill="#4a7aaa" font-size="8" font-family="monospace" opacity="0.6">K</text>
+            <text x="300" y="90" fill="#5a8aba" font-size="8" font-family="monospace" opacity="0.5">RES</text>
+            <text x="30" y="315" fill="#2a4a6a" font-size="8" font-family="monospace">Pineview Water Systems · Parcel + Network</text>
+          </svg>
+          <span class="img-label">Production GIS · Utility Systems</span>
         </div>
-        <div class="project-highlights">
-          <div class="highlight">Working in a live production environment — decisions have real downstream consequences</div>
-          <div class="highlight">Navigating system relationships between AGOL, Field Maps, and Cityworks</div>
-          <div class="highlight">Rebuilding and documenting GIS infrastructure as the sole GIS person</div>
+        <div class="project-body">
+          <span class="project-type type-utility">Utility GIS · Data Management</span>
+          <h3 class="project-title">Production Utility GIS — Pineview Water Systems</h3>
+          <p class="project-desc">
+            Managing GIS infrastructure for a live utility environment including parcel data, hosted feature layers, service area maps, and Cityworks-connected assets. The work centers on system integrity: preserving classifications, avoiding broken dependencies, and keeping AGOL workflows maintainable.
+          </p>
+          <div class="project-tags">
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">ArcGIS Online</span>
+            <span class="tag">Cityworks</span>
+            <span class="tag">Feature Services</span>
+            <span class="tag">Data Management</span>
+            <span class="tag">GlobalID</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">Working in a production environment where edits have downstream consequences</div>
+            <div class="highlight">Managing relationships between AGOL, Field Maps, and Cityworks</div>
+            <div class="highlight">Building structure, documentation, and repeatable workflows as the main GIS person</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- PROJECT 4 -->
-    <div class="project-card reveal reveal-delay-1">
-      <div class="project-img pipeline">
-        <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="g4" cx="30%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#200a35" stop-opacity="0.8"/>
-              <stop offset="100%" stop-color="#0a0612" stop-opacity="0.3"/>
-            </radialGradient>
-          </defs>
-          <rect width="600" height="338" fill="url(#g4)"/>
-          <!-- Pipeline flow diagram -->
-          <!-- Stage boxes -->
-          <rect x="30" y="120" width="90" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
-          <text x="75" y="138" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">CSV Input</text>
-          <text x="75" y="152" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">raw data</text>
-
-          <rect x="170" y="90" width="95" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
-          <text x="217" y="108" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">Detect Type</text>
-          <text x="217" y="122" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">line vs point</text>
-
-          <rect x="170" y="165" width="95" height="44" rx="2" fill="#1a0e28" stroke="#4a2a52" stroke-width="1" opacity="0.8"/>
-          <text x="217" y="183" fill="#c084fc" font-size="8" font-family="monospace" text-anchor="middle">Validate</text>
-          <text x="217" y="197" fill="#906ac4" font-size="7" font-family="monospace" text-anchor="middle">schema / QA</text>
-
-          <rect x="320" y="120" width="95" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
-          <text x="367" y="138" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">Process</text>
-          <text x="367" y="152" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">ArcPy batch</text>
-
-          <rect x="470" y="120" width="100" height="44" rx="2" fill="#1a0e28" stroke="#3ecf8e" stroke-width="1" opacity="0.8"/>
-          <text x="520" y="138" fill="#3ecf8e" font-size="8" font-family="monospace" text-anchor="middle">Feature Class</text>
-          <text x="520" y="152" fill="#2a9a6e" font-size="7" font-family="monospace" text-anchor="middle">output / AGOL</text>
-
-          <!-- Arrows -->
-          <line x1="120" y1="142" x2="168" y2="125" stroke="#5a3a7a" stroke-width="1" marker-end="url(#arr)"/>
-          <line x1="120" y1="142" x2="168" y2="180" stroke="#5a3a7a" stroke-width="1"/>
-          <line x1="265" y1="112" x2="318" y2="135" stroke="#5a3a7a" stroke-width="1"/>
-          <line x1="265" y1="187" x2="318" y2="155" stroke="#5a3a7a" stroke-width="1"/>
-          <line x1="415" y1="142" x2="468" y2="142" stroke="#3a5a4a" stroke-width="1.5" stroke-dasharray="none"/>
-          <!-- Arrow markers drawn inline -->
-          <polygon points="468,138 468,146 475,142" fill="#3a5a4a"/>
-
-          <!-- Code snippet flavor -->
-          <text x="30" y="265" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.9">def detect_geometry(csv_path):</text>
-          <text x="30" y="278" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.8">    geom = infer_schema(csv_path)</text>
-          <text x="30" y="291" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.7">    return "LINE" if has_endpoints(geom) else "POINT"</text>
-          <text x="30" y="310" fill="#3a2a5a" font-size="7" font-family="monospace" opacity="0.5">Python / ArcPy · Automated batch processing</text>
-        </svg>
-        <span class="img-label">Python · ArcPy · Automation</span>
-      </div>
-      <div class="project-body">
-        <span class="project-type type-automation">Automation · Data Engineering</span>
-        <h3 class="project-title">GIS Data Pipeline Automation with Python / ArcPy</h3>
-        <p class="project-desc">
-          Built repeatable workflows for importing and processing spatial datasets from CSV — auto-detecting geometry type (line vs. point), batch processing multiple datasets, and outputting feature classes. Designed with QA validation in mind and focused on workflows someone else could actually run, not just one-off scripts.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">ArcPy</span>
-          <span class="tag">Batch Processing</span>
-          <span class="tag">Data Validation</span>
-          <span class="tag">Workflow Design</span>
-          <span class="tag">PostgreSQL</span>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img real-image">
+          <img src="images/weber-map.png" alt="Weber-Box Elder Conservation District map layout for Pineview Water Systems" />
+          <span class="img-label">Cartography · Weber-Box Elder</span>
         </div>
-        <div class="project-highlights">
-          <div class="highlight">Geometry auto-detection — handles heterogeneous input without manual configuration</div>
-          <div class="highlight">Built for repeatability, not just one-time use</div>
-          <div class="highlight">Interested in extending into automated QA and error logging</div>
+        <div class="project-body">
+          <span class="project-type type-cartography">Cartography · Communication</span>
+          <h3 class="project-title">Conservation District Mapping &amp; Cartographic Design</h3>
+          <p class="project-desc">
+            Designed district-level map layouts for Pineview Water Systems with readable boundaries, inset maps, and regional context. This work focused on clean visual communication for real organizational use.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Cartography</span>
+            <span class="tag">Map Layouts</span>
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Inset Maps</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Planning Maps</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">Produced clean, client-facing map deliverables for actual district communication</div>
+            <div class="highlight">Balanced boundary emphasis, context, and readability for non-technical audiences</div>
+            <div class="highlight">Built consistent layout structure across multiple conservation district maps</div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label reveal">Technical Profile</p>
-  <h2 class="section-title reveal">Skills</h2>
-  <p class="section-desc reveal">Tools and methods used in real projects — not just listed for the sake of it.</p>
-
-  <div class="skills-layout reveal">
-    <div class="skill-group">
-      <div class="skill-group-label">GIS Platforms</div>
-      <div class="skill-list">
-        <div class="skill-item"><span>ArcGIS Pro</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
-        <div class="skill-item"><span>ArcGIS Online</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><span>Field Maps</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span>Survey123</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
-        <div class="skill-item"><span>Cityworks</span><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
-        <div class="skill-item"><span>Experience Builder</span><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+      <div class="project-card reveal">
+        <div class="project-img real-image">
+          <img src="images/socd-map.png" alt="South Ogden Conservation District map layout for Pineview Water Systems" />
+          <span class="img-label">Cartography · South Ogden</span>
+        </div>
+        <div class="project-body">
+          <span class="project-type type-cartography">Cartography · Communication</span>
+          <h3 class="project-title">South Ogden Conservation District Layout</h3>
+          <p class="project-desc">
+            Produced a focused district map with local detail and regional context to show service extent clearly. The layout was designed to be straightforward, readable, and presentation-ready.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Layout Design</span>
+            <span class="tag">Regional Context</span>
+            <span class="tag">Boundary Mapping</span>
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Visual Communication</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">Showcases real deliverables rather than placeholder portfolio graphics</div>
+            <div class="highlight">Communicates district coverage cleanly with minimal clutter</div>
+            <div class="highlight">Adds stronger cartographic credibility to the site</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Programming &amp; Data</div>
-      <div class="skill-list">
-        <div class="skill-item"><span>Python / ArcPy</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><span>R (ecology / stats)</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
-        <div class="skill-item"><span>PostgreSQL / PostGIS</span><div class="skill-bar"><div class="skill-fill" style="width:58%"></div></div></div>
-        <div class="skill-item"><span>Spatial SQL</span><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
-        <div class="skill-item"><span>ENMeval / MaxEnt</span><div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div></div>
-        <div class="skill-item"><span>VBA / Excel Macros</span><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Spatial Methods</div>
-      <div class="skill-list">
-        <div class="skill-item"><span>Habitat Modeling</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
-        <div class="skill-item"><span>Remote Sensing / NDVI</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span>Field Sampling Design</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
-        <div class="skill-item"><span>Data Management / QA</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><span>Topology / Networks</span><div class="skill-bar"><div class="skill-fill" style="width:62%"></div></div></div>
-        <div class="skill-item"><span>Workflow Automation</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
-      </div>
-    </div>
-  </div>
 
-  <div class="strengths-box reveal">
-    <div class="strength-item">
-      <div class="strength-icon">⟁</div>
-      <div class="strength-text">
-        <strong>GIS + Ecology</strong>
-        <span>Comfortable moving between spatial analysis and ecological reasoning — not just one or the other.</span>
-      </div>
-    </div>
-    <div class="strength-item">
-      <div class="strength-icon">⟳</div>
-      <div class="strength-text">
-        <strong>Models → Fieldwork</strong>
-        <span>Translating suitability outputs into real sampling designs with practical constraints baked in.</span>
-      </div>
-    </div>
-    <div class="strength-item">
-      <div class="strength-icon">⊞</div>
-      <div class="strength-text">
-        <strong>Systems Thinking</strong>
-        <span>Thinking about how layers, databases, and platforms connect — not just what a map looks like.</span>
-      </div>
-    </div>
-    <div class="strength-item">
-      <div class="strength-icon">⌧</div>
-      <div class="strength-text">
-        <strong>Messy Data</strong>
-        <span>Real datasets are inconsistent. Building workflows that handle that is the actual job.</span>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img pipeline">
+          <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="g4" cx="30%" cy="40%" r="65%">
+                <stop offset="0%" stop-color="#200a35" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#0a0612" stop-opacity="0.3"/>
+              </radialGradient>
+            </defs>
+            <rect width="600" height="338" fill="url(#g4)"/>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label reveal">Background</p>
-  <h2 class="section-title reveal">Experience</h2>
-  <p class="section-desc reveal">Where the skills come from.</p>
+            <rect x="30" y="120" width="90" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
+            <text x="75" y="138" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">CSV Input</text>
+            <text x="75" y="152" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">raw data</text>
 
-  <div class="exp-timeline">
+            <rect x="170" y="90" width="95" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
+            <text x="217" y="108" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">Detect Type</text>
+            <text x="217" y="122" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">line vs point</text>
 
-    <div class="exp-item current reveal">
-      <div class="exp-date">Feb 2026 — Present</div>
-      <div class="exp-role">GIS Technician / Administrator</div>
-      <div class="exp-org">Pineview Water Systems · Ogden, UT</div>
-      <div class="exp-bullets">
-        <div class="exp-bullet">Sole GIS person — managing all spatial data, hosted layers, and AGOL infrastructure for a water utility</div>
-        <div class="exp-bullet">Python/ArcPy automation: supply point snapping, batch feature class exports, data QA workflows</div>
-        <div class="exp-bullet">Integrated GIS with Cityworks work order system using GlobalID as the link between platforms</div>
-        <div class="exp-bullet">Building out documentation, layer inventory, and repeatable workflows from scratch</div>
-        <div class="exp-bullet">Evaluated ArcGIS Utility Network migration with cost-benefit analysis and implementation roadmap</div>
+            <rect x="170" y="165" width="95" height="44" rx="2" fill="#1a0e28" stroke="#4a2a52" stroke-width="1" opacity="0.8"/>
+            <text x="217" y="183" fill="#c084fc" font-size="8" font-family="monospace" text-anchor="middle">Validate</text>
+            <text x="217" y="197" fill="#906ac4" font-size="7" font-family="monospace" text-anchor="middle">schema / QA</text>
+
+            <rect x="320" y="120" width="95" height="44" rx="2" fill="#1a0e28" stroke="#3a1e52" stroke-width="1" opacity="0.9"/>
+            <text x="367" y="138" fill="#a084c4" font-size="8" font-family="monospace" text-anchor="middle">Process</text>
+            <text x="367" y="152" fill="#7a64a4" font-size="7" font-family="monospace" text-anchor="middle">ArcPy batch</text>
+
+            <rect x="470" y="120" width="100" height="44" rx="2" fill="#1a0e28" stroke="#3ecf8e" stroke-width="1" opacity="0.8"/>
+            <text x="520" y="138" fill="#3ecf8e" font-size="8" font-family="monospace" text-anchor="middle">Feature Class</text>
+            <text x="520" y="152" fill="#2a9a6e" font-size="7" font-family="monospace" text-anchor="middle">output / local GDB</text>
+
+            <line x1="120" y1="142" x2="168" y2="125" stroke="#5a3a7a" stroke-width="1"/>
+            <line x1="120" y1="142" x2="168" y2="180" stroke="#5a3a7a" stroke-width="1"/>
+            <line x1="265" y1="112" x2="318" y2="135" stroke="#5a3a7a" stroke-width="1"/>
+            <line x1="265" y1="187" x2="318" y2="155" stroke="#5a3a7a" stroke-width="1"/>
+            <line x1="415" y1="142" x2="468" y2="142" stroke="#3a5a4a" stroke-width="1.5"/>
+            <polygon points="468,138 468,146 475,142" fill="#3a5a4a"/>
+
+            <text x="30" y="265" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.9">def detect_geometry(csv_path):</text>
+            <text x="30" y="278" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.8">    geom = infer_schema(csv_path)</text>
+            <text x="30" y="291" fill="#2a1a3a" font-size="7.5" font-family="monospace" opacity="0.7">    return "LINE" if has_endpoints(geom) else "POINT"</text>
+            <text x="30" y="310" fill="#3a2a5a" font-size="7" font-family="monospace" opacity="0.5">Python / ArcPy · Automated batch processing</text>
+          </svg>
+          <span class="img-label">Python · ArcPy · Automation</span>
+        </div>
+        <div class="project-body">
+          <span class="project-type type-automation">Automation · Data Engineering</span>
+          <h3 class="project-title">GIS Data Pipeline Automation with Python / ArcPy</h3>
+          <p class="project-desc">
+            Built repeatable workflows for importing and processing spatial datasets from CSV, automatically detecting geometry type, batch processing multiple inputs, and outputting usable feature classes. Designed for repeatability and future QA expansion instead of one-off scripting.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">ArcPy</span>
+            <span class="tag">Batch Processing</span>
+            <span class="tag">Data Validation</span>
+            <span class="tag">Workflow Design</span>
+            <span class="tag">Automation</span>
+          </div>
+          <div class="project-highlights">
+            <div class="highlight">Handles heterogeneous line and point inputs without manual rework</div>
+            <div class="highlight">Built around repeatability and maintainable workflow structure</div>
+            <div class="highlight">Designed as a foundation for stronger validation and error logging</div>
+          </div>
+        </div>
       </div>
+
     </div>
+  </section>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">2024 — Present</div>
-      <div class="exp-role">Wildlife Habitat Researcher (Independent)</div>
-      <div class="exp-org">Weber State University · Dr. Rebeka Brasso</div>
-      <div class="exp-bullets">
-        <div class="exp-bullet">Designing and executing a habitat suitability study for <em>Hogna carolinensis</em> (Carolina wolf spider)</div>
-        <div class="exp-bullet">Built MaxEnt model from GBIF occurrence data; reclassified output into stratified field sampling zones</div>
-        <div class="exp-bullet">Generated transect designs in ArcGIS Pro for Antelope Island and Strong's Creek field sites</div>
-        <div class="exp-bullet">Wrote XLSForm for transect-based Survey123 data collection</div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-date">2023 — Present</div>
-      <div class="exp-role">GIS Intern / Geospatial Analyst</div>
-      <div class="exp-org">Weber State University · Dr. Ryan Frazier</div>
-      <div class="exp-bullets">
-        <div class="exp-bullet">Produced web map embeds and HTML/CSS layouts for conservation district websites</div>
-        <div class="exp-bullet">Documenting methods and building reproducible ArcPy / Model Builder workflows as deliverables</div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-date">B.S. Zoology — Graduating 2026</div>
-      <div class="exp-role">Weber State University</div>
-      <div class="exp-org">Minor: Geospatial Studies · GIS Certificate</div>
-      <div class="exp-bullets">
-        <div class="exp-bullet">Combined zoology and GIS curriculum with self-directed applied research</div>
-        <div class="exp-bullet">Independently initiated the wolf spider habitat project and pursued faculty mentorship</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <p class="section-label reveal" style="justify-content:center;">Get In Touch</p>
-    <h2 class="section-title reveal">Contact</h2>
-    <p class="contact-desc reveal">
-      Open to GIS, spatial analysis, and wildlife/conservation roles. Happy to talk through projects or just connect.
+  <section id="skills">
+    <p class="section-label reveal">Technical Profile</p>
+    <h2 class="section-title reveal">Skills</h2>
+    <p class="section-desc reveal">
+      Tools and methods used in actual projects and workflows.
     </p>
-    <div class="contact-links reveal">
-      <a href="mailto:liamncrettol@gmail.com" class="contact-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        Email
-      </a>
-      <a href="www.linkedin.com/in/liam-crettol-memo5527" target="_blank" class="contact-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-        LinkedIn
-      </a>
-      <a href="#" class="contact-link">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
+
+    <div class="skills-layout reveal">
+      <div class="skill-group">
+        <div class="skill-group-label">GIS Platforms</div>
+        <div class="skill-list">
+          <div class="skill-item"><span>ArcGIS Pro</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+          <div class="skill-item"><span>ArcGIS Online</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+          <div class="skill-item"><span>Field Maps</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+          <div class="skill-item"><span>Survey123</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+          <div class="skill-item"><span>Cityworks</span><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
+          <div class="skill-item"><span>Experience Builder</span><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Programming &amp; Data</div>
+        <div class="skill-list">
+          <div class="skill-item"><span>Python / ArcPy</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+          <div class="skill-item"><span>R (ecology / stats)</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+          <div class="skill-item"><span>PostgreSQL / PostGIS</span><div class="skill-bar"><div class="skill-fill" style="width:58%"></div></div></div>
+          <div class="skill-item"><span>Spatial SQL</span><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+          <div class="skill-item"><span>ModelBuilder</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+          <div class="skill-item"><span>Excel / Workflow Docs</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Spatial Methods</div>
+        <div class="skill-list">
+          <div class="skill-item"><span>Habitat Modeling</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+          <div class="skill-item"><span>Remote Sensing / NDVI</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+          <div class="skill-item"><span>Field Sampling Design</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+          <div class="skill-item"><span>Data Management / QA</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+          <div class="skill-item"><span>Cartographic Layout Design</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+          <div class="skill-item"><span>Workflow Automation</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <span>Liam Crettol — GIS &amp; Spatial Analysis</span>
-  <span>Built with HTML/CSS · Ogden, UT</span>
-</footer>
+    <div class="strengths-box reveal">
+      <div class="strength-item">
+        <div class="strength-icon">⟁</div>
+        <div class="strength-text">
+          <strong>GIS + Ecology</strong>
+          <span>Comfortable moving between spatial analysis and ecological reasoning, not just one or the other.</span>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">⟳</div>
+        <div class="strength-text">
+          <strong>Models → Fieldwork</strong>
+          <span>Translating suitability outputs into real sampling designs with practical constraints baked in.</span>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">⊞</div>
+        <div class="strength-text">
+          <strong>Systems Thinking</strong>
+          <span>Thinking about how layers, databases, and platforms connect, not just what a map looks like.</span>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">⌧</div>
+        <div class="strength-text">
+          <strong>Messy Data</strong>
+          <span>Real datasets are inconsistent. Building workflows that handle that is the actual job.</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  <section id="experience">
+    <p class="section-label reveal">Background</p>
+    <h2 class="section-title reveal">Experience</h2>
+    <p class="section-desc reveal">Where the skills come from.</p>
 
-  // Trigger hero elements on load
-  window.addEventListener('load', () => {
-    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 120);
-    });
-  });
+    <div class="exp-timeline">
 
-  // Nav active state on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () =>
+      <div class="exp-item current reveal">
+        <div class="exp-date">2025 — Present</div>
+        <div class="exp-role">GIS Technician / Administrator</div>
+        <div class="exp-org">Pineview Water Systems · Ogden, UT</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Sole GIS person managing hosted layers, AGOL content, and production spatial workflows for a water utility</div>
+          <div class="exp-bullet">Built Python / ArcPy workflows for data processing, exports, and validation-oriented automation</div>
+          <div class="exp-bullet">Worked across parcel data, conservation district mapping, service layers, and Cityworks-connected assets</div>
+          <div class="exp-bullet">Created documentation, inventories, and repeatable processes to stabilize GIS operations</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-date">2024 — Present</div>
+        <div class="exp-role">Wildlife Habitat Researcher (Independent)</div>
+        <div class="exp-org">Weber State University · Faculty mentorship</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Designed and executed a habitat suitability study for <em>Hogna carolinensis</em></div>
+          <div class="exp-bullet">Built modeling and stratified sampling workflows to guide field transects and surveys</div>
+          <div class="exp-bullet">Connected GIS outputs to practical field methods and ecological interpretation</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-date">2023 — Present</div>
+        <div class="exp-role">Independent Conservation / Spatial Analysis Work</div>
+        <div class="exp-org">Cheetah habitat and landscape analysis</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Used remote sensing and spatial ecology concepts to evaluate habitat suitability, fragmentation, and conservation viability</div>
+          <div class="exp-bullet">Applied ecological theory to real-world conservation questions rather than limiting work to map production</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-date">B.S. Zoology — In Progress</div>
+        <div class="exp-role">Weber State University</div>
+        <div class="exp-org">Minor: Geospatial Studies · GIS Certificate</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Combined zoology and GIS coursework with self-directed spatial research and applied technical projects</div>
+          <div class="exp-bullet">Focused on wildlife habitat modeling, conservation analysis, and utility GIS workflows</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label reveal" style="justify-content:center;">Get In Touch</p>
+      <h2 class="section-title reveal">Contact</h2>
+      <p class="contact-desc reveal">
+        Open to GIS, spatial analysis, utility GIS, and wildlife or conservation-focused roles. Happy to talk through projects or connect.
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:liamncrettol@gmail.com" class="contact-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="M2 7l10 7 10-7"></path>
+          </svg>
+          Email
+        </a>
+
+        <a href="https://www.linkedin.com/in/liam-crettol-memo5527" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path>
+          </svg>
+          LinkedIn
+        </a>
+
+        <a href="https://github.com/liamcrettol" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3"></path>
+            <path d="M15 22v-4a4 4 0 0 0-1-3c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-6 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.56 8c0 5.42 3.3 6.61 6.44 7a4 4 0 0 0-1 3v4"></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>liamcrettol.github.io</span>
+    <span>Built for GIS, ecology, and applied spatial analysis work</span>
+  </footer>
+
+</body>
+</html>
