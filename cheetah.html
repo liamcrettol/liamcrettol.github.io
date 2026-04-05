@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheetah Habitat & Conservation — Liam Crettol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0f12;
+      --bg2:       #111418;
+      --bg3:       #181d22;
+      --border:    #222830;
+      --border2:   #2d3540;
+      --text:      #c8d0d8;
+      --text-dim:  #6a7a8a;
+      --text-faint:#3a4450;
+      --accent:    #3ecf8e;
+      --accent2:   #1a8f62;
+      --accent-glow: rgba(62,207,142,0.12);
+      --amber:     #e8a84c;
+      --white:     #eef2f5;
+      --mono:      'IBM Plex Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+      --display:   'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 54px;
+      background: rgba(12,15,18,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .nav-left {
+      display: flex; align-items: center; gap: 1.25rem;
+    }
+
+    .back-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-dim);
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--accent); }
+    .back-btn::before { content: '←'; }
+
+    .nav-divider {
+      width: 1px; height: 16px;
+      background: var(--border2);
+    }
+
+    .nav-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+    }
+
+    .nav-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(232,168,76,0.3);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* ── HEADER ── */
+    .paper-header {
+      padding: 3rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .paper-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .paper-type {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .paper-type::before { content: '//'; color: var(--text-faint); }
+
+    .paper-title {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .paper-meta {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .meta-item {
+      display: flex; flex-direction: column; gap: 0.1rem;
+    }
+    .meta-label {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .meta-value {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    .paper-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 1px;
+    }
+
+    .header-actions {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0a1a12;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #5aeaa9; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border2);
+    }
+    .btn-ghost:hover { border-color: var(--text-dim); color: var(--white); }
+
+    /* ── ABSTRACT STRIP ── */
+    .abstract-strip {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+    }
+    .abstract-strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .abstract-label {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding-top: 0.15rem;
+      white-space: nowrap;
+    }
+    .abstract-text {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    /* ── PDF VIEWER ── */
+    .viewer-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg3);
+    }
+
+    .viewer-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 2.5rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .viewer-info {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+    }
+
+    .viewer-controls {
+      display: flex; gap: 0.5rem;
+    }
+
+    .viewer-btn {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border2);
+      background: transparent;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      transition: all 0.2s;
+    }
+    .viewer-btn:hover { color: var(--accent); border-color: var(--accent2); }
+
+    .pdf-frame-wrap {
+      flex: 1;
+      position: relative;
+      min-height: calc(100vh - 280px);
+    }
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #525659;
+    }
+
+    /* fallback if iframe blocked */
+    .pdf-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      height: 100%;
+      padding: 3rem;
+      text-align: center;
+    }
+    .pdf-fallback p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      max-width: 400px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      flex-shrink: 0;
+    }
+    footer span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .paper-header { padding: 2rem 1.25rem 1.5rem; }
+      .paper-header-inner { grid-template-columns: 1fr; }
+      .header-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .abstract-strip { padding: 1.25rem; }
+      .abstract-strip-inner { grid-template-columns: 1fr; gap: 0.5rem; }
+      .viewer-toolbar { padding: 0.6rem 1.25rem; }
+      .pdf-frame-wrap { min-height: 60vh; }
+      footer { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="back-btn">Portfolio</a>
+    <div class="nav-divider"></div>
+    <span class="nav-title">Cheetah Conservation · 2024</span>
+  </div>
+  <span class="nav-tag">Conservation · Remote Sensing</span>
+</nav>
+
+<!-- HEADER -->
+<div class="paper-header">
+  <div class="paper-header-inner">
+    <div>
+      <p class="paper-type">Research Paper</p>
+      <h1 class="paper-title">Landscape Fragmentation and Conservation<br>Strategies for Cheetahs in Northern South Africa</h1>
+      <div class="paper-meta">
+        <div class="meta-item">
+          <span class="meta-label">Author</span>
+          <span class="meta-value">Liam N. Crettol</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Institution</span>
+          <span class="meta-value">Weber State University</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Department</span>
+          <span class="meta-value">Zoology</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Pages</span>
+          <span class="meta-value">16</span>
+        </div>
+      </div>
+      <div class="paper-tags">
+        <span class="tag">Remote Sensing</span>
+        <span class="tag">NDVI</span>
+        <span class="tag">Habitat Fragmentation</span>
+        <span class="tag">ArcGIS Pro</span>
+        <span class="tag">MVP Analysis</span>
+        <span class="tag">Conservation Planning</span>
+        <span class="tag">MCDA</span>
+        <span class="tag">Population Viability</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="LandscapeFragCheetah.pdf" download class="btn btn-primary">
+        ↓ Download PDF
+      </a>
+      <a href="LandscapeFragCheetah.pdf" target="_blank" class="btn btn-ghost">
+        Open in Tab ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ABSTRACT -->
+<div class="abstract-strip">
+  <div class="abstract-strip-inner">
+    <span class="abstract-label">Abstract</span>
+    <p class="abstract-text">
+      Rapid habitat fragmentation and escalating human-wildlife conflict have contributed to steep global declines in cheetah (<em>Acinonyx jubatus</em>) populations, currently estimated at approximately 7,500 individuals worldwide. South Africa holds roughly 1,000 of these individuals and represents the only national population currently exhibiting net growth. This study analyzes how the landscape of the Limpopo province in northern South Africa can be leveraged to support expanded cheetah populations using three complementary approaches: NDVI reclassification of satellite-derived remote sensing data; multi-criteria analysis (MCDA) of tracking methods; and effective population size estimation to contextualize minimum viable population requirements. Approximately 72% of the free-range study area falls within vegetation classes broadly suitable for cheetah occupancy. MVP analysis yielded N<sub>e</sub>&nbsp;&asymp;&nbsp;984, approaching the revised minimum threshold of 1,000.
+    </p>
+  </div>
+</div>
+
+<!-- VIEWER TOOLBAR -->
+<div class="viewer-toolbar">
+  <span class="viewer-info">LandscapeFragCheetah.pdf &nbsp;·&nbsp; 16 pages</span>
+  <div class="viewer-controls">
+    <a href="LandscapeFragCheetah.pdf" target="_blank" class="viewer-btn">↗ Full screen</a>
+    <a href="LandscapeFragCheetah.pdf" download class="viewer-btn">↓ Download</a>
+  </div>
+</div>
+
+<!-- PDF EMBED -->
+<div class="viewer-wrap">
+  <div class="pdf-frame-wrap">
+    <iframe
+      src="LandscapeFragCheetah.pdf"
+      title="Landscape Fragmentation and Conservation Strategies for Cheetahs in Northern South Africa"
+      id="pdf-iframe"
+    ></iframe>
+    <div class="pdf-fallback" id="pdf-fallback">
+      <p>Your browser isn't displaying the PDF inline. Use the buttons below to open or download it.</p>
+      <a href="LandscapeFragCheetah.pdf" target="_blank" class="btn btn-primary">Open PDF ↗</a>
+      <a href="LandscapeFragCheetah.pdf" download class="btn btn-ghost">↓ Download</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Liam Crettol — GIS &amp; Spatial Analysis</span>
+  <a href="index.html" style="font-family:var(--mono);font-size:10px;letter-spacing:0.06em;color:var(--text-faint);text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-faint)'">← Back to portfolio</a>
+</footer>
+
+<script>
+  // If iframe fails to load (e.g. mobile Safari PDF issues), show fallback
+  const iframe = document.getElementById('pdf-iframe');
+  const fallback = document.getElementById('pdf-fallback');
+
+  iframe.addEventListener('error', () => {
+    iframe.style.display = 'none';
+    fallback.style.display = 'flex';
+  });
+
+  // Timeout fallback for browsers that don't fire error on blocked iframes
+  setTimeout(() => {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc || doc.body.innerHTML === '') {
+        iframe.style.display = 'none';
+        fallback.style.display = 'flex';
+      }
+    } catch(e) {
+      // cross-origin, assume it loaded fine
+    }
+  }, 3000);
+</script>
+
+</body>
+</html>
