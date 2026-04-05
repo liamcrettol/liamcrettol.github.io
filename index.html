@@ -581,12 +581,12 @@
     }
 
     /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
+    .reveal {/* disabled */
+      
+      
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
-    .reveal.visible {
+    .reveal, .reveal.visible {
       opacity: 1;
       transform: none;
     }
